@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rakada  | Hardware Engineer Portfolio</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            },
+            accent: {
+              cyan: '#06b6d4',
+              amber: '#f59e0b',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    /* Hardware Circuit Grid subtle background */
+    .circuit-bg {
+      background-image: radial-gradient(rgba(59, 130, 246, 0.12) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .dark .circuit-bg {
+      background-image: radial-gradient(rgba(59, 130, 246, 0.18) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300">
+
+  <!-- Navbar -->
+  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/80 dark:bg-slate-950/80 border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-2 group">
+        <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold group-hover:scale-105 transition-transform shadow-md shadow-blue-500/20">
+          <i data-lucide="cpu" class="w-5 h-5"></i>
+        </div>
+        <span class="font-bold text-lg tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+          rakada
+        </span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+        <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Tentang</a>
+        <a href="#skills" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Skills</a>
+        <a href="#projects" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Proyek</a>
+        <a href="#achievements" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Prestasi</a>
+        <a href="#education" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Pendidikan</a>
+        <a href="#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Kontak</a>
+      </nav>
+
+      <!-- Right Action & Dark Mode Toggle -->
+      <div class="flex items-center gap-3">
+        <button id="theme-toggle" aria-label="Toggle theme" class="p-2 rounded-lg text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+          <i id="theme-icon-light" data-lucide="sun" class="w-5 h-5 hidden"></i>
+          <i id="theme-icon-dark" data-lucide="moon" class="w-5 h-5"></i>
+        </button>
+
+        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 shadow-sm transition-all shadow-blue-600/20">
+          <span>Hubungi</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav Menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 text-sm font-medium">
+      <a href="#about" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 mobile-link">Tentang</a>
+      <a href="#skills" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 mobile-link">Skills</a>
+      <a href="#projects" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 mobile-link">Proyek</a>
+      <a href="#achievements" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 mobile-link">Prestasi</a>
+      <a href="#education" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 mobile-link">Pendidikan</a>
+      <a href="#contact" class="block px-3 py-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 mobile-link text-blue-600 dark:text-blue-400 font-semibold">Kontak</a>
+    </div>
+  </header>
+
+  <main class="circuit-bg">
+    <!-- HERO SECTION -->
+    <section id="home" class="min-h-screen pt-28 pb-16 flex items-center justify-center relative px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto text-center space-y-6">
+        <!-- Status Pill -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800/60 text-blue-700 dark:text-blue-300 shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Terbuka untuk Peluang Kerja (Hardware Engineer)</span>
+        </div>
+
+        <!-- Name & Headline -->
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+          rakada
+        </h1>
+
+        <p class="text-xl sm:text-2xl font-semibold text-blue-600 dark:text-blue-400 tracking-tight">
+          Electrical Engineering Graduate | Hardware & PCB Design Enthusiast
+        </p>
+
+        <!-- Tagline -->
+        <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+          &ldquo;Menghadirkan solusi perangkat keras yang fungsional dan teruji untuk menjawab kebutuhan pengguna.&rdquo;
+        </p>
+
+        <!-- CTAs -->
+        <div class="pt-4 flex flex-wrap items-center justify-center gap-4">
+          <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-white bg-blue-600 hover:bg-blue-700 transition shadow-lg shadow-blue-600/25">
+            <i data-lucide="folder-code" class="w-4 h-4"></i>
+            <span>Lihat Proyek</span>
+          </a>
+          <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <i data-lucide="mail" class="w-4 h-4"></i>
+            <span>Hubungi Saya</span>
+          </a>
+        </div>
+
+        <!-- Meta pills -->
+        <div class="pt-6 flex flex-wrap items-center justify-center gap-6 text-sm text-slate-500 dark:text-slate-400">
+          <div class="flex items-center gap-1.5">
+            <i data-lucide="graduation-cap" class="w-4 h-4 text-blue-500"></i>
+            <span>STr Teknik Elektronika (PENS)</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <i data-lucide="map-pin" class="w-4 h-4 text-rose-500"></i>
+            <span>Surabaya, Indonesia</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 border-t border-slate-200 dark:border-slate-800/80 bg-white/60 dark:bg-slate-900/40 backdrop-blur-sm">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-2">Profil</h2>
+          <p class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Tentang Saya</p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 p-8 sm:p-10 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-5 text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
+          <p>
+            Saya adalah lulusan Sarjana Terapan (STr) Teknik Elektronika dari Politeknik Elektronika Negeri Surabaya (PENS) yang berfokus pada bidang <strong class="text-slate-900 dark:text-white font-semibold">Hardware Engineering</strong>. Saya memiliki pendekatan kerja yang berorientasi pada pemecahan masalah (<em class="italic">problem solving</em>), terutama dalam merancang, merakit, dan memastikan sistem kelistrikan serta perangkat keras berfungsi dengan andal sesuai kebutuhan pengguna.
+          </p>
+          <p>
+            Pengalaman saya mencakup perancangan PCB, pengkabelan (<em class="italic">wiring</em>), penyolderan komponen, hingga integrasi sistem pada kompetisi teknologi dan proyek terapan. Saya antusias untuk berkontribusi dalam perancangan dan pengembangan produk perangkat keras di lingkungan industri profesional.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="py-20 border-t border-slate-200 dark:border-slate-800/80">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-2">Keahlian</h2>
+          <p class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Kompetensi Teknis</p>
+          <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">Keterampilan praktis yang diverifikasi melalui proyek dan kompetisi.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Card 1: Hardware -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-blue-500/50 transition">
+            <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-5">
+              <i data-lucide="wrench" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3">Hardware</h3>
+            <ul class="space-y-2.5 text-sm text-slate-600 dark:text-slate-300">
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0"></i>
+                <span>Wiring & Cable Routing</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0"></i>
+                <span>Soldering (THT & Assembly)</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0"></i>
+                <span>Hardware Assembly & Installation</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0"></i>
+                <span>Hands-on Problem Solving</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Card 2: PCB Design -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-blue-500/50 transition">
+            <div class="w-12 h-12 rounded-xl bg-cyan-100 dark:bg-cyan-950/60 text-cyan-600 dark:text-cyan-400 flex items-center justify-center mb-5">
+              <i data-lucide="layers" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3">PCB Design</h3>
+            <ul class="space-y-2.5 text-sm text-slate-600 dark:text-slate-300">
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0"></i>
+                <span>Schematic Capture</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0"></i>
+                <span>PCB Layout & Routing</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0"></i>
+                <span>Design for Prototyping</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Card 3: Tools & Integration -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-blue-500/50 transition">
+            <div class="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-5">
+              <i data-lucide="settings" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3">Tools & Systems</h3>
+            <ul class="space-y-2.5 text-sm text-slate-600 dark:text-slate-300">
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0"></i>
+                <span>Multimeter & Measurement Tools</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0"></i>
+                <span>Collaborative Robot Integration</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 shrink-0"></i>
+                <span>Hardware Troubleshooting</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="py-20 border-t border-slate-200 dark:border-slate-800/80 bg-white/60 dark:bg-slate-900/40 backdrop-blur-sm">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-2">Portofolio</h2>
+          <p class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Proyek Pilihan</p>
+          <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">Implementasi nyata perangkat keras dan integrasi sistem.</p>
+        </div>
+
+        <div class="space-y-8">
+          <!-- Featured Project 1: Portable Clothes Dryer -->
+          <div class="p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl pointer-events-none"></div>
+            
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+              <div class="flex items-center gap-2">
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800/50 flex items-center gap-1.5">
+                  <i data-lucide="award" class="w-3.5 h-3.5"></i>
+                  <span>Juara 2 Best Innovative Product</span>
+                </span>
+                <span class="text-xs text-slate-400 dark:text-slate-500">• Student Company</span>
+              </div>
+              <span class="text-xs font-medium text-slate-500 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-md">Hardware Prototyping</span>
+            </div>
+
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">
+              Pembuatan Pengering Pakaian Portabel
+            </h3>
+            
+            <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base mb-6 leading-relaxed">
+              Proyek purwarupa produk pengering pakaian portabel yang dirancang untuk menjawab permasalahan masyarakat di area perkotaan yang memiliki keterbatasan lahan untuk menjemur pakaian di bawah terik matahari.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 mb-6 text-sm">
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800/60">
+                <span class="font-semibold text-slate-900 dark:text-white block mb-1">Kontribusi Saya:</span>
+                <p class="text-slate-600 dark:text-slate-400">
+                  Perancangan kelistrikan/hardware, penyolderan dan wiring komponen modul, perakitan purwarupa fisik, serta pengujian fungsional alat.
+                </p>
+              </div>
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800/60">
+                <span class="font-semibold text-slate-900 dark:text-white block mb-1">Hasil & Capaian:</span>
+                <p class="text-slate-600 dark:text-slate-400">
+                  Produk purwarupa berfungsi dengan baik dan berhasil meraih penghargaan <strong class="text-amber-600 dark:text-amber-400">Juara 2 Best Innovative Product</strong> pada kompetisi Student Company.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs">
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium">PCB Design</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium">Soldering</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium">Wiring</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium">Problem Solving</span>
+            </div>
+          </div>
+
+          <!-- Project 2 & 3 Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Project 2: CCTV -->
+            <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">Installation Project</span>
+                  <i data-lucide="video" class="w-5 h-5 text-slate-400"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Instalasi CCTV Sekolah</h3>
+                <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 leading-relaxed">
+                  Pemasangan dan pengintegrasian unit kamera keamanan CCTV di lingkungan sekolah untuk mendukung sistem pengawasan area secara terpusat.
+                </p>
+                <div class="text-xs text-slate-600 dark:text-slate-400 space-y-1.5 mb-5">
+                  <p><strong>Kontribusi:</strong> Penarikan jalur kabel (daya & video), terminasi konektor, pemasangan perangkat kamera, serta pengecekan kelayakan sinyal.</p>
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs">
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Wiring</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Cable Management</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Troubleshooting</span>
+              </div>
+            </div>
+
+            <!-- Project 3: AC Installation -->
+            <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">Electrical Project</span>
+                  <i data-lucide="wind" class="w-5 h-5 text-slate-400"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Instalasi Air Conditioning (AC)</h3>
+                <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 leading-relaxed">
+                  Pekerjaan instalasi kelistrikan sistem pendingin udara (AC), memastikan koneksi catu daya dan sistem kontrol terpasang aman sesuai standar teknis.
+                </p>
+                <div class="text-xs text-slate-600 dark:text-slate-400 space-y-1.5 mb-5">
+                  <p><strong>Kontribusi:</strong> Penyambungan jalur kabel daya dan kontrol unit, pengikatan rapi, serta pengujian fungsionalitas unit pendingin.</p>
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2 pt-3 border-t border-slate-100 dark:border-slate-800 text-xs">
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Wiring</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Electrical Setup</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Problem Solving</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS SECTION -->
+    <section id="achievements" class="py-20 border-t border-slate-200 dark:border-slate-800/80">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-2">Pencapaian</h2>
+          <p class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Prestasi Kompetisi</p>
+        </div>
+
+        <div class="space-y-4">
+          <!-- Award 1 -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0">
+              <i data-lucide="trophy" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <div class="flex flex-wrap items-center gap-2 mb-1">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Juara 2 LKS DIKMEN</h3>
+                <span class="text-xs px-2.5 py-0.5 rounded-full font-medium bg-blue-100 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300">Bidang Lomba CRSI</span>
+              </div>
+              <p class="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+                Collaborative Robot System Integration (CRSI)
+              </p>
+              <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                Kompetisi integrasi sistem robotik kolaboratif, pengkabelan sensor/aktuator, dan penyelesaian misi otomasi di bawah batasan waktu serta standar akurasi tinggi.
+              </p>
+            </div>
+          </div>
+
+          <!-- Award 2 -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0">
+              <i data-lucide="award" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <div class="flex flex-wrap items-center gap-2 mb-1">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Juara 2 BEST INNOVATIVE Product</h3>
+                <span class="text-xs px-2.5 py-0.5 rounded-full font-medium bg-emerald-100 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300">Student Company</span>
+              </div>
+              <p class="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+                Produk Inovasi Pengering Pakaian Portabel
+              </p>
+              <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                Penghargaan inovasi atas perancangan purwarupa alat pengering pakaian portabel yang dirancang untuk menjawab kendala keterbatasan lahan penjemuran.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section id="education" class="py-20 border-t border-slate-200 dark:border-slate-800/80 bg-white/60 dark:bg-slate-900/40 backdrop-blur-sm">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-2">Riwayat</h2>
+          <p class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Pendidikan</p>
+        </div>
+
+        <div class="max-w-2xl mx-auto">
+          <div class="p-6 sm:p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
+                <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Sarjana Terapan (STr) Teknik Elektronika</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-300 font-medium">Politeknik Elektronika Negeri Surabaya (PENS)</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Fokus Bidang: Hardware Engineering, Kelistrikan & Sistem Tertanam</p>
+              </div>
+            </div>
+            <div class="sm:text-right shrink-0">
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                Lulus 2026
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-20 border-t border-slate-200 dark:border-slate-800/80">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="mb-12">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-2">Kontak</h2>
+          <p class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Mari Terhubung</p>
+          <p class="mt-2 text-base text-slate-600 dark:text-slate-300 max-w-xl mx-auto">
+            Terbuka untuk peluang kerja penuh waktu, magang, maupun proyek kolaborasi di bidang Hardware Engineering.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto mb-10 text-left">
+          <!-- Email Card -->
+          <a href="mailto:rakadarahman99@gmail.com" class="p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-blue-500 transition group flex items-center gap-3.5">
+            <div class="w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+              <i data-lucide="mail" class="w-5 h-5"></i>
+            </div>
+            <div class="overflow-hidden">
+              <span class="text-xs font-medium text-slate-400 block">Kirim Email</span>
+              <span class="text-sm font-semibold text-slate-800 dark:text-slate-200 truncate block">rakadarahman99@gmail.com</span>
+            </div>
+          </a>
+
+          <!-- Location Card -->
+          <div class="p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-3.5">
+            <div class="w-10 h-10 rounded-lg bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0">
+              <i data-lucide="map-pin" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <span class="text-xs font-medium text-slate-400 block">Domisili</span>
+              <span class="text-sm font-semibold text-slate-800 dark:text-slate-200">Surabaya, Indonesia</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="inline-flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a href="mailto:rakadarahman99@gmail.com" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-600/25 transition">
+            <i data-lucide="send" class="w-4 h-4"></i>
+            <span>Hubungi via Email</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-8 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-center text-xs text-slate-500 dark:text-slate-400">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>&copy; 2026 rakada. Portofolio Hardware Engineering.</p>
+      <p class="flex items-center gap-1">
+        <span>Dibangun dengan HTML, Tailwind CSS & JS</span>
+      </p>
+    </div>
+  </footer>
+
+  <!-- SCRIPT: Dark mode & Mobile Menu & Lucide -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Dark Mode Toggle Logic
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const lightIcon = document.getElementById('theme-icon-light');
+    const darkIcon = document.getElementById('theme-icon-dark');
+
+    // Check system preference or saved preference
+    const userTheme = localStorage.getItem('theme');
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (userTheme === 'dark' || (!userTheme && systemTheme)) {
+      document.documentElement.classList.add('dark');
+      lightIcon.classList.remove('hidden');
+      darkIcon.classList.add('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      lightIcon.classList.add('hidden');
+      darkIcon.classList.remove('hidden');
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        lightIcon.classList.add('hidden');
+        darkIcon.classList.remove('hidden');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        lightIcon.classList.remove('hidden');
+        darkIcon.classList.add('hidden');
+      }
+    });
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
